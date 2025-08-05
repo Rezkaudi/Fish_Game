@@ -40,13 +40,14 @@ body::before {
     radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.1) 2px, transparent 2px),
     radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
     radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.05) 3px, transparent 3px);
-  animation: float 20s infinite linear;
+  animation: float 25s infinite linear;
   pointer-events: none;
 }
 
 @keyframes float {
-  0% { transform: translateY(100vh) rotate(0deg); }
-  100% { transform: translateY(-100vh) rotate(360deg); }
+  0% { transform: translateY(100vh) rotate(0deg) scale(1); }
+  50% { transform: translateY(0vh) rotate(180deg) scale(1.1); }
+  100% { transform: translateY(-100vh) rotate(360deg) scale(1); }
 }
 
 /* Game Canvas */
