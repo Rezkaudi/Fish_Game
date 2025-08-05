@@ -1,21 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Fish Game">
-  <meta name="keywords" content="Fish Game">
+  <meta name="description" content="Fish Game - Collect letters underwater!">
+  <meta name="keywords" content="Fish Game, HTML5 Game, Canvas Game">
   <link rel="shortcut icon" href="./assist/logo.svg" type="image/x-icon">
-  <title>Fish Game</title>
-  <link rel="stylesheet" href="./assist/css/styles.css" />
+  <title>Ocean Letter Quest</title>
+  <link rel="stylesheet" href="./src/styles/main.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One:wght@400&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
-
 <body>
-  <canvas id="main"></canvas>
+  <!-- Game UI Overlay -->
+  <div id="gameUI">
+    <!-- Header -->
+    <header class="game-header">
+      <div class="header-left">
+        <h1 class="game-title">🐠 Ocean Letter Quest</h1>
+      </div>
+      <div class="header-right">
+        <div class="stat-item">
+          <span class="stat-label">Score</span>
+          <span id="scoreDisplay" class="stat-value">0</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">Letters</span>
+          <span id="lettersDisplay" class="stat-value">0</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">Level</span>
+          <span id="levelDisplay" class="stat-value">1</span>
+        </div>
+      </div>
+    </header>
 
-  <script src="./assist/js/script.js"></script>
+    <!-- Word Display -->
+    <div class="word-display">
+      <div class="collected-word">
+        <span class="word-label">Collected Word:</span>
+        <span id="collectedWord" class="word-text">Start collecting letters!</span>
+      </div>
+    </div>
+
+    <!-- Game Controls -->
+    <div class="game-controls">
+      <button id="pauseBtn" class="control-btn">⏸️ Pause</button>
+      <button id="muteBtn" class="control-btn">🔊 Sound</button>
+      <button id="resetBtn" class="control-btn">🔄 Reset</button>
+    </div>
+
+    <!-- Instructions -->
+    <div class="instructions">
+      <p>🖱️ Move your mouse to guide the fish • 🎯 Collect letter bubbles • 📝 Form words!</p>
+    </div>
+  </div>
+
+  <!-- Game Canvas -->
+  <canvas id="gameCanvas"></canvas>
+
+  <!-- Game Over Modal -->
+  <div id="gameOverModal" class="modal hidden">
+    <div class="modal-content">
+      <h2>🎉 Great Swimming!</h2>
+      <div class="final-stats">
+        <p>Final Score: <span id="finalScore">0</span></p>
+        <p>Letters Collected: <span id="finalLetters">0</span></p>
+        <p>Level Reached: <span id="finalLevel">1</span></p>
+        <p>Word Formed: <span id="finalWord">None</span></p>
+      </div>
+      <div class="modal-buttons">
+        <button id="playAgainBtn" class="btn-primary">🎮 Play Again</button>
+        <button id="shareBtn" class="btn-secondary">📤 Share Score</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pause Modal -->
+  <div id="pauseModal" class="modal hidden">
+    <div class="modal-content">
+      <h2>⏸️ Game Paused</h2>
+      <p>Take a breather! Your fish is waiting.</p>
+      <button id="resumeBtn" class="btn-primary">▶️ Resume</button>
+    </div>
+  </div>
+
+  <!-- Loading Screen -->
+  <div id="loadingScreen" class="loading-screen">
+    <div class="loading-content">
+      <div class="fish-loader">🐠</div>
+      <h2>Diving into the Ocean...</h2>
+      <div class="loading-bar">
+        <div class="loading-progress"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="./src/js/game.js" type="module"></script>
 </body>
-
 </html>
